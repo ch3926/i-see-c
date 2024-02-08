@@ -4,9 +4,11 @@
 
 int main()
 {
-    char input[] = "111011100000101011011";
-    int length = strlen(input);
-
+    char input[] = "111011100000101011011"; // original binary input
+    int length = strlen(input); // length of binary input -- will be used for calculations
+    char res[32]; // where resulting base32 representation will be stored
+    
+    // first ensure length of bin input is divisible by 5, if not, then pad extra zeros to the start if needed.
     // make sure length of input is divisible by 5
     if (length % 5 != 0)
     {
@@ -26,4 +28,7 @@ int main()
     }
 
     // now read in groups of 5 and match to array
+
+
+    // reverse 
 }

@@ -15,21 +15,26 @@ int main()
     if (length % 5 != 0)
     {
         int remainder = (length % 5);
-        int zeros_needed = (5 - remainder);
-        char formatted_str[50];
+        int zerosNeeded = (5 - remainder);
+        char formattedStr[50];
 
         // fill zeros_str with the number of zeros_needec
-        for (int i = 0; i < zeros_needed; i++)
+        for (int i = 0; i < zerosNeeded; i++)
         {
-            formatted_str[i] = '0';
+            formattedStr[i] = '0';
         }
 
         // now concatenate the original input string to the end of formatted_str
-        strcat(formatted_str, input);
-        printf("formatted string: %s\n", formatted_str);
+        strcat(formattedStr, input);
+        printf("formatted string: %s\n", formattedStr);
     }
 
     // now read in groups of 5 and match to array
+    for(int i=0; i<(length/5); i++){
+        char chunk[6];
+        strncpy(chunk, formattedStr+(5*i), 4);
+        chunk[5] = '\0' // null-terminating for compatibility with printf(), strlen() etc
+    }
 
 
     // reverse res since we start reading from the front

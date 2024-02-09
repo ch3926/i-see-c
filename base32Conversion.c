@@ -31,9 +31,10 @@ int main()
 
     // now read in groups of 5 and match to array
     for(int i=0; i<(length/5); i++){
-        char chunk[6];
-        strncpy(chunk, formattedStr+(5*i), 4);
+        char chunk[7]; // creating a char array with 7 digits available
+        strncpy(chunk, formattedStr+(5*i), 5); // copy starting from 5*0, 5*1,... etc for 5 elems each time
         chunk[5] = '\0'; // null-terminating for compatibility with printf(), strlen() etc
+        printf("chunk: %s\n", chunk); // printing out to make sure original string is correctly partitioning into chunks of 5
     }
 
 

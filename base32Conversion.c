@@ -48,17 +48,16 @@ int main()
         for (int i = 0; i < 32; i++) {
         // Compare the current string with the search string
             if (strcmp(binChunks[i], chunk) == 0) {
-                printf("String found at index %d\n", i);
-                printf("Corresponding base32 value: %s\n", base32Table[i]);
+                strcat(res, base32Table[i]);
+                // printf("String found at index %d\n", i);
+                // printf("Corresponding base32 value: %s\n", base32Table[i]);
                 //found = 1; // Set the flag to indicate that the string is found
                 break;    // Exit the loop once the string is found
             }
 
         }
     
-    
-
-
-    // reverse res since we start reading from the front
     }
+
+    return res;
 }

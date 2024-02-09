@@ -5,6 +5,7 @@
 int main()
 {
     char input[] = "111011100000101011011"; // original binary input
+    //char input[] = "11011100000101011011";
     int length = strlen(input); // length of binary input -- will be used for calculations
     char res[32]; // where resulting base32 representation will be stored
     char formattedStr[50];
@@ -23,11 +24,18 @@ int main()
         {
             formattedStr[i] = '0';
         }
+        // must also increase length for following calculations to know how many chunks to make
+        length += zerosNeeded;
 
         // now concatenate the original input string to the end of formatted_str
         strcat(formattedStr, input);
         printf("formatted string: %s\n", formattedStr);
+
+
+    } else {
+        strcpy(formattedStr, input);
     }
+    
 
     // now read in groups of 5 and match to array
     for(int i=0; i<(length/5); i++){
@@ -35,8 +43,22 @@ int main()
         strncpy(chunk, formattedStr+(5*i), 5); // copy starting from 5*0, 5*1,... etc for 5 elems each time
         chunk[5] = '\0'; // null-terminating for compatibility with printf(), strlen() etc
         printf("chunk: %s\n", chunk); // printing out to make sure original string is correctly partitioning into chunks of 5
-    }
+    
+        // now convert bin chunks into corresponding base32 representations and add to res array
+        for (int i = 0; i < 32; i++) {
+        // Compare the current string with the search string
+            if (strcmp(binChunks[i], chunk) == 0) {
+                printf("String found at index %d\n", i);
+                printf("Corresponding base32 value: %s\n", base32Table[i]);
+                //found = 1; // Set the flag to indicate that the string is found
+                break;    // Exit the loop once the string is found
+            }
+
+        }
+    
+    
 
 
     // reverse res since we start reading from the front
+    }
 }

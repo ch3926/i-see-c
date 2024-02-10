@@ -3,14 +3,16 @@
 #include <string.h>
 #include <stdlib.h> // For malloc and free
 
-char* binToBase32() {
+char* binToBase32(const char *input) {
+    printf("Received string: %s\n", input);
     
     char* res = malloc(32 * sizeof(char)); // Allocate memory for the string
-    char input[] = "111011100000101011011"; // original binary input
+    //char input[] = "111011100000101011011"; // original binary input
     //char input[] = "11011100000101011011";
     int length = strlen(input); // length of binary input -- will be used for calculations
     //char res[32]; // where resulting base32 representation will be stored
-    char formattedStr[50];
+    char formattedStr[100];
+    formattedStr[0] = '\0'; // ensure null-terminated
     char binChunks[][6] = {"00000", "00001", "00010", "00011", "00100", "00101", "00110", "00111", "01000", "01001", "01010", "01011", "01100", "01101", "01110", "01111", "10000", "10001", "10010", "10011", "10100", "10101", "10110", "10111", "11000", "11001", "11010", "11011", "11100", "11101", "11110", "11111"};
     char base32Table[][3] ={"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V"};
     
@@ -21,17 +23,19 @@ char* binToBase32() {
         int remainder = (length % 5);
         int zerosNeeded = (5 - remainder);
 
-        // fill zeros_str with the number of zeros_needec
+        // fill formattedStr with the number of zeros_needec
         for (int i = 0; i < zerosNeeded; i++)
         {
             formattedStr[i] = '0';
         }
+        formattedStr[zerosNeeded] = '\0'; // ensure null-terminated for strcat()
         // must also increase length for following calculations to know how many chunks to make
         length += zerosNeeded;
 
         // now concatenate the original input string to the end of formatted_str
+        printf("formatted string before strcat: %s\n", formattedStr);
         strcat(formattedStr, input);
-        printf("formatted string: %s\n", formattedStr);
+        printf("formatted string after strcat: %s\n", formattedStr);
 
 
     } else {
@@ -66,7 +70,15 @@ char* binToBase32() {
 
 int main()
 {
-    char* res = binToBase32();
+    char input[100];
+    input[sizeof(input)-1] = '\0';
+
+    printf("Enter a binary string: ");
+    scanf("%s", input); // Read an integer from the user
+
+    printf("You entered: %s\n", input);
+
+    char* res = binToBase32(input);
     printf("Base 32 Representation: %s\n", res);
     
     // Free the dynamically allocated memory when done

@@ -58,7 +58,6 @@ char* binToBase32(const char *input) {
                 strcat(res, base32Table[i]);
                 // printf("String found at index %d\n", i);
                 // printf("Corresponding base32 value: %s\n", base32Table[i]);
-                //found = 1; // Set the flag to indicate that the string is found
                 break;    // Exit the loop once the string is found
             }
 

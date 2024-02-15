@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 
 int main(){
     int input_decimal = 25;
@@ -14,6 +15,8 @@ int main(){
     for(int j = i-1; j >= 0; j--){
         printf("%d\n", bin[j]);
     }
-
+    //printf("%d",length); // prints length of resulting binary array
+    bin[length] = '\0';
     printf("binary output: %s\n", bin);
+
 }

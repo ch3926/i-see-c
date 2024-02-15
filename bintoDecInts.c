@@ -15,6 +15,7 @@ int main(){
             decimal += pow(2, (exp));
         }
     }
-    printf("%d\n", decimal);
+    printf("binary input: %s\n", bin_input);
+    printf("cnverted decimal integer: %d\n", decimal);
 }
 

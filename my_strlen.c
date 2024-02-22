@@ -14,7 +14,7 @@ int main(){
     input[sizeof(input)-1] = '\0';
 
     printf("Enter a string: ");
-    scanf("%s", input); // Read a string input
+    scanf("%[^\n]", input); // Read a string input including white spaces
 
     my_strlen(input);
     

@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main(){
-    int arr[] = {1, 2, 55, 4, 5};
+void minMax(int *arr){
     int min = arr[0];
     int max = arr[0];
 
@@ -14,5 +13,10 @@ int main(){
         }
     }
     printf("Min: %d\tMax: %d\n", min, max);
+}
+
+int main(){
+    int arr[] = {1, 2, 55, 4, 5};
+    minMax(arr);
     return 0;
 }
